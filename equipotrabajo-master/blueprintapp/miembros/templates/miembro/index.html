@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}Mi Título{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">👥 Listado de Miembros</h2>
+        <a href="{{ url_for('bp_miembro.create') }}" class="btn btn-primary">
+            <i class="bi bi-plus-circle me-1"></i>Nuevo Miembro
+        </a>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if miembros %}
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th class="py-3">ID</th>
+                        <th class="py-3">Nombre</th>
+                        <th class="py-3">Email</th>
+                        <th class="py-3 text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in miembros %}
+                    <tr>
+                        <td class="py-3">{{ item.id }}</td>
+                        <td class="py-3 fw-medium">{{ item.nombre }}</td>
+                        <td class="py-3">{{ item.email }}</td>
+                        <td class="py-3 text-center">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a href="{{ url_for('bp_miembro.edit', id=item.id) }}" 
+                                   class="btn btn-outline-warning" title="Editar">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a href="{{ url_for('bp_miembro.delete', id=item.id) }}" 
+                                   class="btn btn-outline-danger" 
+                                   onclick="return confirm('¿Estás seguro de eliminar este miembro?')"
+                                   title="Eliminar">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% else %}
+    <div class="text-center py-5 text-muted">
+        <i class="bi bi-people display-4"></i>
+        <p class="mt-3">No hay miembros registrados</p>
+        <a href="{{ url_for('bp_miembro.create') }}" class="btn btn-primary">Registrar primero</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

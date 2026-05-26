@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - Blueprints Flask{% endblock %}
+
+{% block content %}
+
+<div class="text-center mb-5">
+    <h1 class="hero-title display-4">
+        <i class="bi bi-grid-3x3-gap me-3"></i>
+        Bienvenido a Blueprints Flask
+    </h1>
+    <p class="hero-subtitle">
+        Sistema de gestión modular con Flask y SQLAlchemy
+    </p>
+</div>
+
+
+<div class="row g-4 mb-5">
+    <!-- Miembros Card -->
+    <div class="col-md-6">
+        <a href="{{ url_for('bp_miembro.index') }}" class="feature-card">
+            <div class="feature-icon">
+                <i class="bi bi-people"></i>
+            </div>
+            <h3 class="feature-title">Gestión de Miembros</h3>
+            <p class="feature-description">
+                Administra el registro de miembros del equipo. 
+                Agrega, edita y elimina miembros con información detallada.
+            </p>
+            <div class="mt-3">
+                <span class="btn btn-primary btn-lg">
+                    <i class="bi bi-arrow-right me-2"></i>Acceder
+                </span>
+            </div>
+        </a>
+    </div>
+
+   
+    <div class="col-md-6">
+        <a href="{{ url_for('bp_tarea.index') }}" class="feature-card">
+            <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <i class="bi bi-check2-square"></i>
+            </div>
+            <h3 class="feature-title">Control de Tareas</h3>
+            <p class="feature-description">
+                Organiza y gestiona las tareas del proyecto. 
+                Marca completadas, edita y da seguimiento al progreso.
+            </p>
+            <div class="mt-3">
+                <span class="btn btn-lg" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
+                    <i class="bi bi-arrow-right me-2"></i>Acceder
+                </span>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="stats-card">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="stats-number">
+                        <i class="bi bi-grid me-2"></i>2
+                    </div>
+                    <div>Módulos Activos</div>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="stats-number">
+                        <i class="bi bi-database me-2"></i>SQL
+                    </div>
+                    <div>Base de Datos</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-number">
+                        <i class="bi bi-lightning me-2"></i>100%
+                    </div>
+                    <div>Funcional</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <h5 class="card-title mb-3">
+                    <i class="bi bi-info-circle me-2 text-primary"></i>
+                    Características del Proyecto
+                </h5>
+                <div class="row">
+                    <div class="col-md-4 mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        Arquitectura MVC
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        Flask Blueprints
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        SQLAlchemy ORM
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        Bootstrap 5
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        CRUD Completo
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        Diseño Responsive
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
