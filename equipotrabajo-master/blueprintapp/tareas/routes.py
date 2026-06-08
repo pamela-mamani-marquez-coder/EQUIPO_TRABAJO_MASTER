@@ -1,15 +1,14 @@
-# Librerías a usar en el módulo
 from flask import request, render_template, redirect, url_for, Blueprint, flash
-
-# Referencia a la base de datos
+from flask_login import login_required
 from blueprintapp.app import db
-# Modelos con los que interactúa el módulo
 from blueprintapp.tareas.models import Tarea
 
 bp_tarea = Blueprint('bp_tarea', __name__, template_folder='templates')
 
 @bp_tarea.route("/")
+@login_required
 def index():
+
     tareas = Tarea.query.all()
     return render_template('tareas/index.html', tareas=tareas)
 

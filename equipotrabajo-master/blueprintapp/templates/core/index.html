@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - Equipo Trabajo{% endblock %}
+
+{% block content %}
+<!-- Mensaje de Bienvenida Personalizado -->
+<div class="alert alert-info text-center mb-4">
+    {% if current_user.is_authenticated %}
+        <h4>👋 ¡Bienvenido de nuevo, {{ current_user.username }}!</h4>
+        <p>Has iniciado sesión correctamente. Selecciona un módulo para comenzar.</p>
+    {% else %}
+        <h4> Bienvenido al Sistema de Gestión</h4>
+        <p>Por favor, <a href="{{ url_for('bp_auth.login') }}" class="alert-link">inicia sesión</a> para acceder a los módulos.</p>
+    {% endif %}
+</div>
+
+
+<div class="text-center mb-5">
+    <h1 class="hero-title display-4">
+        <i class="bi bi-grid-3x3-gap me-3"></i>Bienvenido a Blueprints Flask
+    </h1>
+    <p class="lead text-muted">Sistema de gestión modular con Flask y SQLAlchemy</p>
+</div>
+
+
+<div class="row g-4">
+    
+    <div class="col-md-6">
+        <a href="{{ url_for('bp_miembro.index') }}" class="feature-card">
+            <div class="feature-icon">
+                <i class="bi bi-people"></i>
+            </div>
+            <h3 class="feature-title">Gestión de Miembros</h3>
+            <p class="feature-description">
+                Administra el registro de miembros del equipo. Agrega, edita y elimina miembros con información detallada.
+            </p>
+            <span class="btn btn-primary mt-3">→ Acceder</span>
+        </a>
+    </div>
+
+  
+    <div class="col-md-6">
+        <a href="{{ url_for('bp_tarea.index') }}" class="feature-card">
+            <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <i class="bi bi-check2-square"></i>
+            </div>
+            <h3 class="feature-title">Control de Tareas</h3>
+            <p class="feature-description">
+                Organiza y gestiona las tareas del proyecto. Marca completadas, edita y da seguimiento al progreso.
+            </p>
+            <span class="btn btn-danger mt-3" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border:none;">→ Acceder</span>
+        </a>
+    </div>
+</div>
+
+
+<div class="stats-card">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="display-4 fw-bold">2</div>
+            <div>Módulos Activos</div>
+        </div>
+        <div class="col-md-4">
+            <div class="display-4 fw-bold"><i class="bi bi-database"></i> SQL</div>
+            <div>Base de Datos</div>
+        </div>
+        <div class="col-md-4">
+            <div class="display-4 fw-bold">100%</div>
+            <div>Funcional</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
